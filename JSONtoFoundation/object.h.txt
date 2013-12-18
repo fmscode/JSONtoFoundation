@@ -1,0 +1,14 @@
+//
+//  [object_name].h
+//
+//  Created by Frank Michael.
+//  Copyright (c) 2013 Frank Michael. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface [object_name] : NSObject
+
+[object_props]
+
+@end

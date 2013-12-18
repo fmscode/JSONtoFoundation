@@ -1,0 +1,13 @@
+//
+//  [object_name].m
+//
+//  Created by Frank Michael.
+//  Copyright (c) 2013 Frank Michael. All rights reserved.
+//
+
+#import "[object_name].h"
+
+@implementation [object_name]
+
+
+@end
