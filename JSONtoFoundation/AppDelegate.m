@@ -34,7 +34,15 @@
         NSString __block *objectProps = @"";
         NSArray *orderedKeys = [[jsonFound allKeys] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
         [orderedKeys enumerateObjectsUsingBlock:^(id key, NSUInteger idx, BOOL *stop) {
-            objectProps = [objectProps stringByAppendingString:[NSString stringWithFormat:@"@property (nonatomic,strong)NSString *%@;\n",[self removeUnderscores:key]]];
+            // Pull out property obj
+            id object = jsonFound[key];
+            if ([object isKindOfClass:[NSArray class]]){
+                objectProps = [objectProps stringByAppendingString:[NSString stringWithFormat:@"@property (nonatomic,strong)NSArray *%@;\n",[self removeUnderscores:key]]];
+            }else if ([object isKindOfClass:[NSNumber class]]){
+                objectProps = [objectProps stringByAppendingString:[NSString stringWithFormat:@"@property (nonatomic,strong)NSNumber *%@;\n",[self removeUnderscores:key]]];
+            }else{
+                objectProps = [objectProps stringByAppendingString:[NSString stringWithFormat:@"@property (nonatomic,strong)NSString *%@;\n",[self removeUnderscores:key]]];
+            }
         }];
         // Add Object properties
         objectHeader = [objectHeader stringByReplacingOccurrencesOfString:@"[object_props]" withString:objectProps];
