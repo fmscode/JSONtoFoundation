@@ -37,11 +37,11 @@
             // Pull out property obj
             id object = jsonFound[key];
             if ([object isKindOfClass:[NSArray class]]){
-                objectProps = [objectProps stringByAppendingString:[NSString stringWithFormat:@"@property (nonatomic,strong)NSArray *%@;\n",[self removeUnderscores:key]]];
+                objectProps = [objectProps stringByAppendingString:[NSString stringWithFormat:@"@property (nonatomic)NSArray *%@;\n",[self removeUnderscores:key]]];
             }else if ([object isKindOfClass:[NSNumber class]]){
-                objectProps = [objectProps stringByAppendingString:[NSString stringWithFormat:@"@property (nonatomic,strong)NSNumber *%@;\n",[self removeUnderscores:key]]];
+                objectProps = [objectProps stringByAppendingString:[NSString stringWithFormat:@"@property (nonatomic)NSNumber *%@;\n",[self removeUnderscores:key]]];
             }else{
-                objectProps = [objectProps stringByAppendingString:[NSString stringWithFormat:@"@property (nonatomic,strong)NSString *%@;\n",[self removeUnderscores:key]]];
+                objectProps = [objectProps stringByAppendingString:[NSString stringWithFormat:@"@property (nonatomic)NSString *%@;\n",[self removeUnderscores:key]]];
             }
         }];
         // Add Object properties
