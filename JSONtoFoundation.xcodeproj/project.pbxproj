@@ -141,6 +141,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Frank Michael";
+				TargetAttributes = {
+					DB3103D4186079120075F0E9 = {
+						DevelopmentTeam = 874S2WBP9T;
+					};
+				};
 			};
 			buildConfigurationList = DB3103D0186079120075F0E9 /* Build configuration list for PBXProject "JSONtoFoundation" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -288,6 +293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONtoFoundation/JSONtoFoundation-Prefix.pch";
@@ -301,6 +307,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "JSONtoFoundation/JSONtoFoundation-Prefix.pch";
