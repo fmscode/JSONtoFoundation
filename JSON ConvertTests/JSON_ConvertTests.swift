@@ -21,9 +21,12 @@ class JSON_ConvertTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+    func testThatItReplacesUnderscores() {
+        
+        let stringTestOne = "this_is_a_long_string"
+        let replacedTestOne = stringTestOne.underscoreReplacement()
+        
+        XCTAssertEqual(replacedTestOne, "thisIsALongString", "Underscore Failed")
     }
     
     func testPerformanceExample() {

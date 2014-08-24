@@ -12,6 +12,8 @@
 		DB28286C19AA2012000177B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB28286B19AA2012000177B0 /* Images.xcassets */; };
 		DB28286F19AA2012000177B0 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB28286D19AA2012000177B0 /* MainMenu.xib */; };
 		DB28287B19AA2012000177B0 /* JSON_ConvertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28287A19AA2012000177B0 /* JSON_ConvertTests.swift */; };
+		DB28288519AA205E000177B0 /* UnderscoreReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28288419AA205E000177B0 /* UnderscoreReplacement.swift */; };
+		DB28288619AA206C000177B0 /* UnderscoreReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB28288419AA205E000177B0 /* UnderscoreReplacement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 		DB28287419AA2012000177B0 /* JSON ConvertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "JSON ConvertTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB28287919AA2012000177B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB28287A19AA2012000177B0 /* JSON_ConvertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON_ConvertTests.swift; sourceTree = "<group>"; };
+		DB28288419AA205E000177B0 /* UnderscoreReplacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderscoreReplacement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				DB28286919AA2012000177B0 /* AppDelegate.swift */,
+				DB28288419AA205E000177B0 /* UnderscoreReplacement.swift */,
 				DB28286B19AA2012000177B0 /* Images.xcassets */,
 				DB28286D19AA2012000177B0 /* MainMenu.xib */,
 				DB28286519AA2012000177B0 /* Supporting Files */,
@@ -210,6 +214,7 @@
 			files = (
 				DB28286A19AA2012000177B0 /* AppDelegate.swift in Sources */,
 				DB28286819AA2012000177B0 /* main.swift in Sources */,
+				DB28288519AA205E000177B0 /* UnderscoreReplacement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB28288619AA206C000177B0 /* UnderscoreReplacement.swift in Sources */,
 				DB28287B19AA2012000177B0 /* JSON_ConvertTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,6 +403,7 @@
 				DB28288019AA2012000177B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB28288119AA2012000177B0 /* Build configuration list for PBXNativeTarget "JSON ConvertTests" */ = {
 			isa = XCConfigurationList;
@@ -405,6 +412,7 @@
 				DB28288319AA2012000177B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
