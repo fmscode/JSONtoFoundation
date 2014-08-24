@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:JSONtoFoundation.xcodeproj">
+      location = "self:JSON Convert.xcodeproj">
    </FileRef>
 </Workspace>
