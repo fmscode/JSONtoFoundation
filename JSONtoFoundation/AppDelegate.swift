@@ -20,17 +20,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let objectiveCH = NSBundle.mainBundle().pathForResource("object.h", ofType: "txt")!
     let objectiveCM = NSBundle.mainBundle().pathForResource("object.m", ofType: "txt")!
 
+    // MARK: ApplicationDelegate
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
         self.jsonTextView.automaticDashSubstitutionEnabled = false
         self.jsonTextView.automaticQuoteSubstitutionEnabled = false
         self.jsonTextView.string = "{\"id\":\"file\",\"value\": \"File\",\"menuitem\": []}"
     }
-
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application
     }
-
+    func applicationShouldHandleReopen(sender: NSApplication!, hasVisibleWindows flag: Bool) -> Bool {
+        if flag {
+            return false;
+        }else {
+            self.window.makeKeyAndOrderFront(self)
+            return true;
+        }
+    }
+    // MARK: Actions
     @IBAction func convertJSON(sender: AnyObject) {
         let json = self.jsonTextView.string
         var fileName = self.fileNameField.stringValue
@@ -48,11 +56,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 if let contents = fileContents {
                     let headerStatus = self.saveFileWithContents("\(fileName).h", fileContents: contents)
                     if headerStatus {
+                        // Save Implementation
                         let objectiveCImp = self.fillInTemplateWithData(self.objectiveCM, objectName: fileName, propertiesContent: nil)
                         if let impContents = objectiveCImp {
                             let impStatus = self.saveFileWithContents("\(fileName).m", fileContents: impContents)
                         }
                     }else{
+                        // Unable to save header file.
                         let errorAlert = NSAlert()
                         errorAlert.messageText = "Unable to save Objective-C Header file!"
                         errorAlert.runModal()
@@ -67,6 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 }
             }
         }else {
+            // JSON error handling
             let errorAlert = NSAlert()
             var errorMessage = "Invalid JSON"
             if let error = convertError {
@@ -76,7 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             errorAlert.runModal()
         }
     }
-    
+    // MARK: File/Template Interaction
     func fillInTemplateWithData(templateName: String,objectName: String,propertiesContent: String?) -> String? {
         var templateContents = NSString(contentsOfFile: templateName, encoding: NSUTF8StringEncoding, error: nil)
         templateContents = templateContents?.stringByReplacingOccurrencesOfString("[object_name]", withString: objectName)
@@ -85,7 +96,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         return templateContents
     }
-    
     func saveFileWithContents(fileName: String,fileContents: String) -> Bool {
         let save = NSSavePanel()
         save.nameFieldStringValue = fileName
@@ -100,17 +110,5 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return false
         }
     }
-    
-    func applicationShouldHandleReopen(sender: NSApplication!, hasVisibleWindows flag: Bool) -> Bool {
-        if flag {
-            return false;
-        }else {
-            self.window.makeKeyAndOrderFront(self)
-            return true;
-        }
-    }
-
-    
-
 }
 
