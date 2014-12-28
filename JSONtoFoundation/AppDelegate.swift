@@ -16,6 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var fileNameField: NSTextField!
     @IBOutlet weak var outputTypeSeg: NSSegmentedControl!
     
+    var preferencesWindow: PreferencesView!
+    
     let swiftTemplate = NSBundle.mainBundle().pathForResource("object.swift", ofType: "txt")!
     let objectiveCH = NSBundle.mainBundle().pathForResource("object.h", ofType: "txt")!
     let objectiveCM = NSBundle.mainBundle().pathForResource("object.m", ofType: "txt")!
@@ -87,12 +89,29 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             errorAlert.runModal()
         }
     }
+    @IBAction func showPrefs(sender: AnyObject) {
+        self.preferencesWindow = PreferencesView(windowNibName: "PreferencesView")
+        self.window!.beginSheet(self.preferencesWindow.window!, completionHandler: nil)
+    }
     // MARK: File/Template Interaction
     func fillInTemplateWithData(templateName: String,objectName: String,propertiesContent: String?) -> String? {
+        let fullName = NSUserDefaults.standardUserDefaults().objectForKey("fullName") as? String
+        
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .ShortStyle
+        formatter.timeStyle = .NoStyle
+        var date = formatter.stringFromDate(NSDate())
+        
         var templateContents = NSString(contentsOfFile: templateName, encoding: NSUTF8StringEncoding, error: nil)
         templateContents = templateContents?.stringByReplacingOccurrencesOfString("[object_name]", withString: objectName)
+        templateContents = templateContents?.stringByReplacingOccurrencesOfString("[date]", withString: date)
         if let properties = propertiesContent {
             templateContents = templateContents?.stringByReplacingOccurrencesOfString("[object_props]", withString: properties)
+        }
+        if let name = fullName {
+            templateContents = templateContents?.stringByReplacingOccurrencesOfString("[user_name]", withString: name)
+        }else{
+            templateContents = templateContents?.stringByReplacingOccurrencesOfString("[user_name]", withString: "")
         }
         return templateContents
     }

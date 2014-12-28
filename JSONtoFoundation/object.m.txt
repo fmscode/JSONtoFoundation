@@ -1,7 +1,7 @@
 //
 //  [object_name].m
 //
-//  Created by [user_name].
+//  Created by [user_name] on [date].
 //  Copyright (c) 2014 [user_name]. All rights reserved.
 //
 
