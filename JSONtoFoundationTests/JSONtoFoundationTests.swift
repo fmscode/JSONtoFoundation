@@ -48,7 +48,7 @@ class JSONtoFoundationTests: XCTestCase {
         
         let jsonConversion = JSONConverter.createPropertiesForFileType(jsonFoundation, type: .ObjectiveC)
         
-        XCTAssertEqual(jsonConversion, "   @property (nonatomic)NSString *id;\n   @property (nonatomic)NSArray *menuitem;\n   @property (nonatomic)NSString *value;\n", "Objective-C JSON conversion failed")
+        XCTAssertEqual(jsonConversion, "@property (nonatomic)NSString *id;\n@property (nonatomic)NSArray *menuitem;\n@property (nonatomic)NSString *value;\n", "Objective-C JSON conversion failed")
     }
     
 }
