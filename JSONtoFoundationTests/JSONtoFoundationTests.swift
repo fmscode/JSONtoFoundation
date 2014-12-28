@@ -1,15 +1,15 @@
 //
-//  JSON_ConvertTests.swift
-//  JSON ConvertTests
+//  JSONtoFoundationTests.swift
+//  JSONtoFoundationTests
 //
-//  Created by Frank Michael on 8/24/14.
+//  Created by Frank Michael on 12/28/14.
 //  Copyright (c) 2014 Frank Michael Sanchez. All rights reserved.
 //
 
 import Cocoa
 import XCTest
 
-class JSON_ConvertTests: XCTestCase {
+class JSONtoFoundationTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
