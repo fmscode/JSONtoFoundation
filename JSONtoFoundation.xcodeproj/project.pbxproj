@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB8AAC401A5086B4001768CA /* object.m.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB8AAC3E1A508684001768CA /* object.m.txt */; };
+		DB8AAC411A5086B6001768CA /* object.h.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB8AAC3D1A50867E001768CA /* object.h.txt */; };
+		DB8AAC421A508935001768CA /* object.swift.txt in Resources */ = {isa = PBXBuildFile; fileRef = DB8AAC3B1A508676001768CA /* object.swift.txt */; };
 		DBFDCE5B1A504DDD005EAD70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDCE5A1A504DDD005EAD70 /* AppDelegate.swift */; };
 		DBFDCE5D1A504DDD005EAD70 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBFDCE5C1A504DDD005EAD70 /* Images.xcassets */; };
 		DBFDCE601A504DDD005EAD70 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBFDCE5E1A504DDD005EAD70 /* MainMenu.xib */; };
@@ -28,6 +31,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB8AAC391A508610001768CA /* JSONtoFoundation.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = JSONtoFoundation.entitlements; sourceTree = "<group>"; };
+		DB8AAC3B1A508676001768CA /* object.swift.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = object.swift.txt; sourceTree = "<group>"; };
+		DB8AAC3D1A50867E001768CA /* object.h.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = object.h.txt; sourceTree = "<group>"; };
+		DB8AAC3E1A508684001768CA /* object.m.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = object.m.txt; sourceTree = "<group>"; };
 		DBFDCE551A504DDD005EAD70 /* JSONtoFoundation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSONtoFoundation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBFDCE591A504DDD005EAD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBFDCE5A1A504DDD005EAD70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +65,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB8AAC3A1A508653001768CA /* Templates */ = {
+			isa = PBXGroup;
+			children = (
+				DB8AAC3B1A508676001768CA /* object.swift.txt */,
+				DB8AAC3D1A50867E001768CA /* object.h.txt */,
+				DB8AAC3E1A508684001768CA /* object.m.txt */,
+			);
+			name = Templates;
+			sourceTree = "<group>";
+		};
 		DBFDCE4C1A504DDD005EAD70 = {
 			isa = PBXGroup;
 			children = (
@@ -79,11 +96,13 @@
 		DBFDCE571A504DDD005EAD70 /* JSONtoFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				DB8AAC391A508610001768CA /* JSONtoFoundation.entitlements */,
 				DBFDCE5A1A504DDD005EAD70 /* AppDelegate.swift */,
 				DBFDCE751A504DF3005EAD70 /* UnderscoreReplacement.swift */,
 				DBFDCE781A5052E6005EAD70 /* JSONConverter.swift */,
 				DBFDCE5C1A504DDD005EAD70 /* Images.xcassets */,
 				DBFDCE5E1A504DDD005EAD70 /* MainMenu.xib */,
+				DB8AAC3A1A508653001768CA /* Templates */,
 				DBFDCE581A504DDD005EAD70 /* Supporting Files */,
 			);
 			path = JSONtoFoundation;
@@ -163,6 +182,11 @@
 				TargetAttributes = {
 					DBFDCE541A504DDD005EAD70 = {
 						CreatedOnToolsVersion = 6.1.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					DBFDCE641A504DDD005EAD70 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -194,8 +218,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB8AAC421A508935001768CA /* object.swift.txt in Resources */,
 				DBFDCE5D1A504DDD005EAD70 /* Images.xcassets in Resources */,
 				DBFDCE601A504DDD005EAD70 /* MainMenu.xib in Resources */,
+				DB8AAC401A5086B4001768CA /* object.m.txt in Resources */,
+				DB8AAC411A5086B6001768CA /* object.h.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +359,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JSONtoFoundation/JSONtoFoundation.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = JSONtoFoundation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -343,6 +371,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JSONtoFoundation/JSONtoFoundation.entitlements;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = JSONtoFoundation/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

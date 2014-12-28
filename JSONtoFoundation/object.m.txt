@@ -1,0 +1,13 @@
+//
+//  [object_name].m
+//
+//  Created by [user_name].
+//  Copyright (c) 2014 [user_name]. All rights reserved.
+//
+
+#import "[object_name].h"
+
+@implementation [object_name]
+
+
+@end

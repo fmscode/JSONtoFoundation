@@ -1,0 +1,13 @@
+//
+//  [object_name].swift
+//
+//
+//  Created by [user_name].
+//  Copyright (c) 2014 [user_name]. All rights reserved.
+//
+
+import Foundation
+
+class [object_name]: NSObject {
+    [object_props]
+}

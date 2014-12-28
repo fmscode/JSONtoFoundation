@@ -15,12 +15,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var jsonTextView: NSTextView!
     @IBOutlet weak var fileNameField: NSTextField!
     @IBOutlet weak var outputTypeSeg: NSSegmentedControl!
-
+    
+    let swiftTemplate = NSBundle.mainBundle().pathForResource("object.swift", ofType: "txt")!
+    let objectiveCH = NSBundle.mainBundle().pathForResource("object.h", ofType: "txt")!
+    let objectiveCM = NSBundle.mainBundle().pathForResource("object.m", ofType: "txt")!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
         self.jsonTextView.automaticDashSubstitutionEnabled = false
         self.jsonTextView.automaticQuoteSubstitutionEnabled = false
+        self.jsonTextView.string = "{\"id\":\"file\",\"value\": \"File\",\"menuitem\": []}"
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -29,17 +33,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBAction func convertJSON(sender: AnyObject) {
         let json = self.jsonTextView.string
+        var fileName = self.fileNameField.stringValue
         let jsonData = json!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         var convertError: NSError?
         let jsonFoundation = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &convertError) as? NSDictionary
         
         if let jsonDic = jsonFoundation {
+            var outputContent = ""
             if (self.outputTypeSeg.selectedSegment == 0){
                 // Obj-C
-                println(JSONConverter.createPropertiesForFileType(jsonDic, type: .ObjectiveC))
+                outputContent = JSONConverter.createPropertiesForFileType(jsonDic, type: .ObjectiveC)
             }else{
                 // Swift
-                println(JSONConverter.createPropertiesForFileType(jsonDic, type: .Swift))
+                outputContent = JSONConverter.createPropertiesForFileType(jsonDic, type: .Swift)
+                var swiftFile = NSString(contentsOfFile: self.swiftTemplate, encoding: NSUTF8StringEncoding, error: nil)
+                swiftFile = swiftFile?.stringByReplacingOccurrencesOfString("[object_name]", withString: fileName)
+                swiftFile = swiftFile?.stringByReplacingOccurrencesOfString("[object_props]", withString: outputContent)
+                
+                let save = NSSavePanel()
+                save.nameFieldStringValue = "\(fileName).swift"
+                save.runModal()
+                
+                if let url = save.URL {
+                    if let swiftContents = swiftFile {
+                        swiftContents.writeToFile(url.path!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
+                    }
+                }
             }
         }else {
             let errorAlert = NSAlert()
