@@ -111,11 +111,11 @@
 			children = (
 				DB8AAC391A508610001768CA /* JSONtoFoundation.entitlements */,
 				DBFDCE5A1A504DDD005EAD70 /* AppDelegate.swift */,
+				DBFDCE5E1A504DDD005EAD70 /* MainMenu.xib */,
 				DB8AAC431A509A07001768CA /* PreferencesView.swift */,
 				DB8AAC441A509A07001768CA /* PreferencesView.xib */,
 				DB8AAC471A509A7F001768CA /* Classes */,
 				DBFDCE5C1A504DDD005EAD70 /* Images.xcassets */,
-				DBFDCE5E1A504DDD005EAD70 /* MainMenu.xib */,
 				DB8AAC3A1A508653001768CA /* Templates */,
 				DBFDCE581A504DDD005EAD70 /* Supporting Files */,
 			);

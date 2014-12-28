@@ -28,6 +28,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.jsonTextView.automaticDashSubstitutionEnabled = false
         self.jsonTextView.automaticQuoteSubstitutionEnabled = false
         self.jsonTextView.string = "{\"id\":\"file\",\"value\": \"File\",\"menuitem\": []}"
+        if let fileType = NSUserDefaults.standardUserDefaults().objectForKey("fileType") as? Int {
+            self.outputTypeSeg.selectedSegment = fileType
+        }
     }
     func applicationWillTerminate(aNotification: NSNotification) {
         // Insert code here to tear down your application

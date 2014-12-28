@@ -6,6 +6,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferencesView" customModule="JSONtoFoundation" customModuleProvider="target">
             <connections>
+                <outlet property="fileTypeSeg" destination="8Jn-Xh-d1z" id="Kzs-3Y-Ij5"/>
                 <outlet property="fullNameField" destination="3od-TS-Jrd" id="Jtz-Er-aff"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -21,6 +22,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="143"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3od-TS-Jrd">
+                        <rect key="frame" x="20" y="101" width="440" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Full Name" drawsBackground="YES" id="j7W-Og-lAj">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kOK-Ki-ksE">
                         <rect key="frame" x="383" y="13" width="83" height="32"/>
                         <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Njc-Fy-4Pb">
@@ -44,14 +53,24 @@ Gw
                             <action selector="closeSettings:" target="-2" id="yQj-Hj-M8P"/>
                         </connections>
                     </button>
-                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3od-TS-Jrd">
-                        <rect key="frame" x="20" y="101" width="440" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Full Name" drawsBackground="YES" id="j7W-Og-lAj">
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="56v-fS-aIj">
+                        <rect key="frame" x="18" y="63" width="154" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Default Conversion Type" id="xgv-Qo-4Ka">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <segmentedControl verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Jn-Xh-d1z">
+                        <rect key="frame" x="176" y="59" width="152" height="24"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="tg5-mZ-Ksc">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment label="Objective-C" selected="YES"/>
+                                <segment label="Swift" tag="1"/>
+                            </segments>
+                        </segmentedCell>
+                    </segmentedControl>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="kOK-Ki-ksE" secondAttribute="trailing" constant="20" id="8lA-k0-SZL"/>
