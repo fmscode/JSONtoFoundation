@@ -29,11 +29,26 @@ class JSONtoFoundationTests: XCTestCase {
         XCTAssertEqual(replacedTestOne, "thisIsALongString", "Underscore Failed")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
+    func testSwiftJSONConversion() {
+        let jsonString = "{\"id\":\"file\",\"value\": \"File\",\"menuitem\": []}"
+        let jsonData = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        var convertError: NSErrorPointer = NSErrorPointer()
+        let jsonFoundation = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: convertError) as NSDictionary
+        
+        let jsonConversion = JSONConverter.createPropertiesForFileType(jsonFoundation, type: .Swift)
+        
+        XCTAssertEqual(jsonConversion, "var id: String?\nvar menuitem: [AnyObject]?\nvar value: String?\n", "Swift JSON conversion failed")
+    }
+    
+    func testObjCJSONConversion() {
+        let jsonString = "{\"id\":\"file\",\"value\": \"File\",\"menuitem\": []}"
+        let jsonData = jsonString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+        var convertError: NSErrorPointer = NSErrorPointer()
+        let jsonFoundation = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: convertError) as NSDictionary
+        
+        let jsonConversion = JSONConverter.createPropertiesForFileType(jsonFoundation, type: .ObjectiveC)
+        
+        XCTAssertEqual(jsonConversion, "@property (nonatomic)NSString *id;\n@property (nonatomic)NSArray *menuitem;\n@property (nonatomic)NSString *value;\n", "Objective-C JSON conversion failed")
     }
     
 }

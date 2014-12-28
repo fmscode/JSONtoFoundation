@@ -13,6 +13,8 @@
 		DBFDCE6C1A504DDD005EAD70 /* JSONtoFoundationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDCE6B1A504DDD005EAD70 /* JSONtoFoundationTests.swift */; };
 		DBFDCE761A504DF3005EAD70 /* UnderscoreReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDCE751A504DF3005EAD70 /* UnderscoreReplacement.swift */; };
 		DBFDCE771A504E0D005EAD70 /* UnderscoreReplacement.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDCE751A504DF3005EAD70 /* UnderscoreReplacement.swift */; };
+		DBFDCE791A5052E6005EAD70 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDCE781A5052E6005EAD70 /* JSONConverter.swift */; };
+		DBFDCE7A1A505494005EAD70 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFDCE781A5052E6005EAD70 /* JSONConverter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,7 @@
 		DBFDCE6A1A504DDD005EAD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DBFDCE6B1A504DDD005EAD70 /* JSONtoFoundationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONtoFoundationTests.swift; sourceTree = "<group>"; };
 		DBFDCE751A504DF3005EAD70 /* UnderscoreReplacement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnderscoreReplacement.swift; sourceTree = "<group>"; };
+		DBFDCE781A5052E6005EAD70 /* JSONConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +81,7 @@
 			children = (
 				DBFDCE5A1A504DDD005EAD70 /* AppDelegate.swift */,
 				DBFDCE751A504DF3005EAD70 /* UnderscoreReplacement.swift */,
+				DBFDCE781A5052E6005EAD70 /* JSONConverter.swift */,
 				DBFDCE5C1A504DDD005EAD70 /* Images.xcassets */,
 				DBFDCE5E1A504DDD005EAD70 /* MainMenu.xib */,
 				DBFDCE581A504DDD005EAD70 /* Supporting Files */,
@@ -211,6 +215,7 @@
 			files = (
 				DBFDCE761A504DF3005EAD70 /* UnderscoreReplacement.swift in Sources */,
 				DBFDCE5B1A504DDD005EAD70 /* AppDelegate.swift in Sources */,
+				DBFDCE791A5052E6005EAD70 /* JSONConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,6 +225,7 @@
 			files = (
 				DBFDCE771A504E0D005EAD70 /* UnderscoreReplacement.swift in Sources */,
 				DBFDCE6C1A504DDD005EAD70 /* JSONtoFoundationTests.swift in Sources */,
+				DBFDCE7A1A505494005EAD70 /* JSONConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
