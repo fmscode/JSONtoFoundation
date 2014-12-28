@@ -36,13 +36,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var convertError: NSError?
         let jsonFoundation = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &convertError) as NSDictionary
         
-        if (convertError != nil) {
+        if (convertError == nil) {
             if (self.outputTypeSeg.selectedSegment == 0){
                 // Obj-C
-                self.createPropertiesForFileType(jsonFoundation, type: .ObjectiveC)
+                println(self.createPropertiesForFileType(jsonFoundation, type: .ObjectiveC))
             }else{
                 // Swift
-                self.createPropertiesForFileType(jsonFoundation, type: .Swift)
+                println(self.createPropertiesForFileType(jsonFoundation, type: .Swift))
             }
         }else {
             println(convertError?.debugDescription)
@@ -53,33 +53,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         let keys = data.allKeys as NSArray
         
-        let orderedKeys = keys.sortedArrayUsingSelector(Selector("caseInsensitiveCompare")) as [String]
+        let orderedKeys = keys.sortedArrayUsingSelector("caseInsensitiveCompare:") as [String]
+        var objectProperties = ""
         for key in orderedKeys {
             let object: AnyObject? = data[key]
             
-            var propertyText = ""
+            var propertyName = key.underscoreReplacement()
             if (object? is NSArray) {
                 if type == FileCreationType.Swift {
-                    
+                    objectProperties += "var \(propertyName): [AnyObject]?"
                 }else{
-                    
+                    objectProperties += "@property (nonatomic)NSArray *\(propertyName);"
                 }
             }else if (object? is NSNumber) {
                 if type == FileCreationType.Swift {
-                    
+                    objectProperties += "var \(propertyName): Int?"
                 }else{
-                    
+                    objectProperties += "@property (nonatomic)NSNumber *\(propertyName);"
                 }
             }else {
                 if type == FileCreationType.Swift {
-                    
+                    objectProperties += "var \(propertyName): String?"
                 }else{
-                    
+                    objectProperties += "@property (nonatomic)NSString *\(propertyName);"
                 }
             }
+            objectProperties += "\n"
         }
         
-        return ""
+        return objectProperties
     }
     func applicationShouldHandleReopen(sender: NSApplication!, hasVisibleWindows flag: Bool) -> Bool {
         if flag {
