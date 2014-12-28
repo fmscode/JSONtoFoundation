@@ -684,23 +684,23 @@
                             <rect key="frame" x="1" y="1" width="223" height="133"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView importsGraphics="NO" richText="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="aBh-em-M3H">
-                                    <rect key="frame" x="0.0" y="0.0" width="223" height="133"/>
+                                <textView importsGraphics="NO" richText="NO" baseWritingDirection="leftToRight" findStyle="bar" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" spellingCorrection="YES" id="aBh-em-M3H">
+                                    <rect key="frame" x="0.0" y="0.0" width="223" height="267"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <size key="minSize" width="749" height="267"/>
-                                    <size key="maxSize" width="749" height="10000000"/>
+                                    <size key="maxSize" width="751" height="10000000"/>
                                     <attributedString key="textStorage">
                                         <fragment content="{&quot;id&quot;:&quot;18&quot;,&quot;device_type&quot;:&quot;Mobile Card Reader&quot;,&quot;serial_number&quot;:&quot;xxx000xxx&quot;}">
                                             <attributes>
                                                 <font key="NSFont" metaFont="controlContent" size="11"/>
-                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight"/>
                                             </attributes>
                                         </fragment>
                                     </attributedString>
                                     <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <size key="minSize" width="749" height="267"/>
-                                    <size key="maxSize" width="749" height="10000000"/>
+                                    <size key="maxSize" width="751" height="10000000"/>
                                 </textView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

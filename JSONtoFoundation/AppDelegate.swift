@@ -19,6 +19,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
+        self.jsonTextView.automaticDashSubstitutionEnabled = false
+        self.jsonTextView.automaticQuoteSubstitutionEnabled = false
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -28,19 +30,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func convertJSON(sender: AnyObject) {
         let json = self.jsonTextView.string
         let jsonData = json!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        var convertError: NSErrorPointer = NSErrorPointer()
-        let jsonFoundation = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: convertError) as NSDictionary
+        var convertError: NSError?
+        let jsonFoundation = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &convertError) as? NSDictionary
         
-        if (convertError == nil) {
+        if let jsonDic = jsonFoundation {
             if (self.outputTypeSeg.selectedSegment == 0){
                 // Obj-C
-                println(JSONConverter.createPropertiesForFileType(jsonFoundation, type: .ObjectiveC))
+                println(JSONConverter.createPropertiesForFileType(jsonDic, type: .ObjectiveC))
             }else{
                 // Swift
-                println(JSONConverter.createPropertiesForFileType(jsonFoundation, type: .Swift))
+                println(JSONConverter.createPropertiesForFileType(jsonDic, type: .Swift))
             }
         }else {
-            println(convertError.debugDescription)
+            let errorAlert = NSAlert()
+            var errorMessage = "Invalid JSON"
+            if let error = convertError {
+                errorMessage = error.localizedDescription
+            }
+            errorAlert.messageText = errorMessage
+            errorAlert.runModal()
         }
     }
     
