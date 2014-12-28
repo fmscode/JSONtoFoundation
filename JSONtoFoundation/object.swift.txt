@@ -9,5 +9,5 @@
 import Foundation
 
 class [object_name]: NSObject {
-    [object_props]
+[object_props]
 }

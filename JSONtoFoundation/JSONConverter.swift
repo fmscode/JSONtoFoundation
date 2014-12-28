@@ -22,6 +22,7 @@ class JSONConverter: NSObject {
         let orderedKeys = keys.sortedArrayUsingSelector("caseInsensitiveCompare:") as [String]
         var objectProperties = ""
         for key in orderedKeys {
+            objectProperties += "   "
             let object: AnyObject? = data[key]
             
             var propertyName = key.underscoreReplacement()
