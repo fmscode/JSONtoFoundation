@@ -43,21 +43,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             if (self.outputTypeSeg.selectedSegment == 0){
                 // Obj-C
                 outputContent = JSONConverter.createPropertiesForFileType(jsonDic, type: .ObjectiveC)
+                var fileContents = self.fillInTemplateWithData(self.objectiveCH, objectName: fileName, propertiesContent: outputContent)
+                // Save Header file
+                if let contents = fileContents {
+                    let headerStatus = self.saveFileWithContents("\(fileName).h", fileContents: contents)
+                    if headerStatus {
+                        let objectiveCImp = self.fillInTemplateWithData(self.objectiveCM, objectName: fileName, propertiesContent: nil)
+                        if let impContents = objectiveCImp {
+                            let impStatus = self.saveFileWithContents("\(fileName).m", fileContents: impContents)
+                        }
+                    }else{
+                        let errorAlert = NSAlert()
+                        errorAlert.messageText = "Unable to save Objective-C Header file!"
+                        errorAlert.runModal()
+                    }
+                }
             }else{
                 // Swift
                 outputContent = JSONConverter.createPropertiesForFileType(jsonDic, type: .Swift)
-                var swiftFile = NSString(contentsOfFile: self.swiftTemplate, encoding: NSUTF8StringEncoding, error: nil)
-                swiftFile = swiftFile?.stringByReplacingOccurrencesOfString("[object_name]", withString: fileName)
-                swiftFile = swiftFile?.stringByReplacingOccurrencesOfString("[object_props]", withString: outputContent)
-                
-                let save = NSSavePanel()
-                save.nameFieldStringValue = "\(fileName).swift"
-                save.runModal()
-                
-                if let url = save.URL {
-                    if let swiftContents = swiftFile {
-                        swiftContents.writeToFile(url.path!, atomically: true, encoding: NSUTF8StringEncoding, error: nil)
-                    }
+                let swiftFile = self.fillInTemplateWithData(self.swiftTemplate, objectName: fileName, propertiesContent: outputContent)
+                if let fileContents = swiftFile {
+                    self.saveFileWithContents("\(fileName).swift", fileContents: fileContents)
                 }
             }
         }else {
@@ -68,6 +74,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
             errorAlert.messageText = errorMessage
             errorAlert.runModal()
+        }
+    }
+    
+    func fillInTemplateWithData(templateName: String,objectName: String,propertiesContent: String?) -> String? {
+        var templateContents = NSString(contentsOfFile: templateName, encoding: NSUTF8StringEncoding, error: nil)
+        templateContents = templateContents?.stringByReplacingOccurrencesOfString("[object_name]", withString: objectName)
+        if let properties = propertiesContent {
+            templateContents = templateContents?.stringByReplacingOccurrencesOfString("[object_props]", withString: properties)
+        }
+        return templateContents
+    }
+    
+    func saveFileWithContents(fileName: String,fileContents: String) -> Bool {
+        let save = NSSavePanel()
+        save.nameFieldStringValue = fileName
+        save.runModal()
+        
+        if let url = save.URL {
+            var error: NSError?
+            let status = fileContents.writeToFile(url.path!, atomically: true, encoding: NSUTF8StringEncoding, error: &error)
+
+            return status
+        }else{
+            return false
         }
     }
     
