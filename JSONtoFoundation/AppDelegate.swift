@@ -112,9 +112,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         formatter.timeStyle = .NoStyle
         var date = formatter.stringFromDate(NSDate())
         
+        let calendar = NSCalendar.currentCalendar()
+        let today = NSDate()
+        let year = calendar.components(.CalendarUnitYear, fromDate: today).year
+        
         var templateContents = NSString(contentsOfFile: templateName, encoding: NSUTF8StringEncoding, error: nil)
         templateContents = templateContents?.stringByReplacingOccurrencesOfString("[object_name]", withString: objectName)
         templateContents = templateContents?.stringByReplacingOccurrencesOfString("[date]", withString: date)
+        templateContents = templateContents?.stringByReplacingOccurrencesOfString("[year]", withString: "\(year)")
         if let properties = propertiesContent {
             templateContents = templateContents?.stringByReplacingOccurrencesOfString("[object_props]", withString: properties)
         }

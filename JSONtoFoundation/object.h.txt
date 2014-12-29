@@ -2,7 +2,7 @@
 //  [object_name].h
 //
 //  Created by [user_name] on [date].
-//  Copyright (c) 2014 [user_name]. All rights reserved.
+//  Copyright (c) [year] [user_name]. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
