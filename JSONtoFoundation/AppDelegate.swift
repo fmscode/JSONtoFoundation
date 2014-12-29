@@ -27,6 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         self.jsonTextView.automaticDashSubstitutionEnabled = false
         self.jsonTextView.automaticQuoteSubstitutionEnabled = false
+        self.jsonTextView.font = NSFont.systemFontOfSize(14)
         self.jsonTextView.string = "{\"id\":\"file\",\"value\": \"File\",\"menuitem\": []}"
         if let fileType = NSUserDefaults.standardUserDefaults().objectForKey("fileType") as? Int {
             self.outputTypeSeg.selectedSegment = fileType
@@ -47,6 +48,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func convertJSON(sender: AnyObject) {
         let json = self.jsonTextView.string
         var fileName = self.fileNameField.stringValue
+        if (fileName.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0){
+            let errorAlert = NSAlert()
+            errorAlert.messageText = "You must supply an class name!"
+            errorAlert.runModal()
+            return
+        }
         let jsonData = json!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
         var convertError: NSError?
         let jsonFoundation = NSJSONSerialization.JSONObjectWithData(jsonData!, options: nil, error: &convertError) as? NSDictionary
