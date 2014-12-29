@@ -13,7 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     @IBOutlet var jsonTextView: NSTextView!
-    @IBOutlet weak var fileNameField: NSTextField!
+    @IBOutlet weak var classNameField: NSTextField!
     @IBOutlet weak var outputTypeSeg: NSSegmentedControl!
     
     var preferencesWindow: PreferencesView!
@@ -47,10 +47,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // MARK: Actions
     @IBAction func convertJSON(sender: AnyObject) {
         let json = self.jsonTextView.string
-        var fileName = self.fileNameField.stringValue
+        var fileName = self.classNameField.stringValue
         if (fileName.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) == 0){
             let errorAlert = NSAlert()
-            errorAlert.messageText = "You must supply an class name!"
+            errorAlert.messageText = "You must supply a class name!"
             errorAlert.runModal()
             return
         }
