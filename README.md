@@ -18,5 +18,16 @@ Objective-C Output:
 
 @end
 ```
+Swift Output:
+```Swift
+import Foundation
+
+class test: NSObject {
+   var deviceType: String?
+   var id: String?
+   var serialNumber: String?
+
+}
+```
 Configuration:
-To expand/edit the base templates, edit object.h.txt & object.m.txt files. Edit these to add your own name and copyright notice.
+To have your name added to the templates simply edit the user name in the app's preferences window. 
