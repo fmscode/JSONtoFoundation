@@ -1,12 +1,12 @@
-JSONtoFoundation
-================
-Take a JSON object and convert it to a Foundation object and export to class files. The files will be saved to your Desktop.
+# JSONtoFoundation
+OS X utility that converts a JSON object to a Foundation object that can be used in Cocoa/Cocoa Touch development. 
 
+## Example
 JSON Object:
 ```JSON
 {"id":"18","device_type":"Mobile Card Reader","serial_number":"xxx000xxx"}
 ```
-NSObject Output:
+Objective-C Output:
 ```Objc
 #import <Foundation/Foundation.h>
 
@@ -16,8 +16,18 @@ NSObject Output:
 @property (nonatomic,strong)NSString *id;
 @property (nonatomic,strong)NSString *serialNumber;
 
-
 @end
 ```
+Swift Output:
+```Swift
+import Foundation
+
+class test: NSObject {
+   var deviceType: String?
+   var id: String?
+   var serialNumber: String?
+
+}
+```
 Configuration:
-To expand/edit the base templates, edit object.h.txt & object.m.txt files. Edit these to add your own name and copyright notice.
+To have your name added to the templates simply edit the user name in the app's preferences window. 

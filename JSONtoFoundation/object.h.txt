@@ -1,8 +1,8 @@
 //
 //  [object_name].h
 //
-//  Created by .
-//  Copyright (c) 2014 . All rights reserved.
+//  Created by [user_name] on [date].
+//  Copyright (c) [year] [user_name]. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

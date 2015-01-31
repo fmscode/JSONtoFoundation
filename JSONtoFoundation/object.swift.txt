@@ -1,13 +1,13 @@
 //
-//  [object_name].m
+//  [object_name].swift
+//
 //
 //  Created by [user_name] on [date].
 //  Copyright (c) [year] [user_name]. All rights reserved.
 //
 
-#import "[object_name].h"
+import Foundation
 
-@implementation [object_name]
-
-
-@end
+class [object_name]: NSObject {
+[object_props]
+}
